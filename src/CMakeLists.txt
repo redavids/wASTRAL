@@ -1,6 +1,13 @@
 cmake_minimum_required (VERSION 2.6)
 project (wASTRAL)
 
+FIND_PACKAGE(Boost)
+IF (Boost_FOUND)
+    INCLUDE_DIRECTORIES(${Boost_INCLUDE_DIR})
+    ADD_DEFINITIONS( "-DHAS_BOOST" )
+ENDIF()
+
+
 link_directories(/usr/local/lib )
 file(GLOB SOURCES *.cpp)
 add_definitions(-std=c++11 -g -O3 -Wall -fopenmp)
